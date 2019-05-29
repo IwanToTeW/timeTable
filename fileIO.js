@@ -1,7 +1,6 @@
 const fs = require('fs');
 const CSVtoJSON = require('csvtojson');
 // const JSONtoCSV = require('json2csv').parse;
-let data;
 
 function createFile(fileName, data){
     fs.writeFile(fileName, data, (err)=> {
@@ -14,28 +13,16 @@ function createFile(fileName, data){
 }
 
 function readFile(fileName) {
-    //  USING PROMISES
-    // return new Promise((resolve, reject) => {
-    //     CSVtoJSON().fromFile('./' + fileName).then(source => {
-    //          if(source !== undefined) {
-    //             resolve(source);
-                
-    //          }
-    //           else {
-    //             reject('No content'); 
-    //           }
-    // })
-    // });
-
     CSVtoJSON().fromFile('./' + fileName).then(source => {
-        if (source !== undefined)
-            data = source
-            // console.log(source);
+            // console.log(source); 
+            return new Promise((resolve, reject) => {
+                if (source !== undefined)
+                    resolve(source)
+                else
+                    reject('No Content')
+            });
+           
     })
-}
-
-function getData() {
-    return data;
 }
 
 function renameFile(fileName, newName) {
@@ -74,6 +61,5 @@ module.exports =
     addLineToFile : addLineToFile, 
     deleteFile : deleteFile, 
     readFile : readFile,
-    getData : getData,
 };
 
