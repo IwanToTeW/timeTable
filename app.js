@@ -20,8 +20,10 @@ console.log(lessons);
 
 // Below goes server code
 const app = express();
-app.get("/", (req, res) => {
+app.get("/users", (req, res) => {
   res.json([{ id: 1, username: "userOne" }, { id: 2, username: "userTwo" }]);
 });
 
-app.listen(3000);
+app.listen(3001, () =>
+  console.log("Express server listening on port 3001 !!!")
+);
