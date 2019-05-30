@@ -1,6 +1,7 @@
 const objects = require("./objects");
 const fileIO = require("./fileIO");
 const express = require("express");
+const bodyParser = require("body-parser");
 
 //  USING PROMISES
 // const jsonData = fileIO.readFile("lessons.csv").then(values => {return values}).catch(err=>console.log(err));
@@ -20,8 +21,25 @@ console.log(lessons);
 
 // Below goes server code
 const app = express();
+// this line is required in order to parse url encoded forms
+app.use(bodyParser.urlencoded({ extended: false }));
+// this line is required in order to get json data
+app.use(bodyParser.json());
+
 app.get("/users", (req, res) => {
   res.json([{ id: 1, username: "userOne" }, { id: 2, username: "userTwo" }]);
+});
+
+app.post("/register", (req, res) => {
+  console.log(req.body);
+  // database work goes here
+  res.send("successfully posted");
+});
+
+app.post("/login", (req, res) => {
+  console.log(req.body);
+  // database work goes here
+  res.send("successfully posted");
 });
 
 app.listen(3001, () =>
