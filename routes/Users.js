@@ -4,7 +4,7 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const User = require("../modules/User.js");
+const User = require("../modules/User.js").default;
 users.use(cors());
 
 process.env.SECRET_KEY = "totev";

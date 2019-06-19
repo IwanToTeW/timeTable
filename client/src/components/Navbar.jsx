@@ -21,6 +21,16 @@ class Landing extends Component {
             Register
           </Link>
         </li>
+        <li className="nav-item">
+          <Link to="/upload" className="nav-link">
+            Upload
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link to="/timetable" className="nav-link">
+            Time table
+          </Link>
+        </li>
       </ul>
     );
 
