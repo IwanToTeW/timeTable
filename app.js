@@ -37,12 +37,8 @@ app.get("/users", (req, res) => {
 //   res.send("successfully posted");
 // });
 const Users = require("./routes/Users.js");
+const FileIO = require("./routes/FileIO.js");
 app.use("/", Users);
-app.post("/login", (req, res) => {
-  console.log(req.body);
-  // database work goes here
-  res.send("successfully posted");
-});
 
 app.listen(3001, () =>
   console.log("Express server listening on port 3001 !!!")

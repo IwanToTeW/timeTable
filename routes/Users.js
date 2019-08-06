@@ -4,7 +4,7 @@ const cors = require("cors");
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const User = require("../modules/User.js").default;
+const User = require("../modules/User.js");
 users.use(cors());
 
 process.env.SECRET_KEY = "totev";
@@ -19,7 +19,8 @@ users.post("/register", (req, res) => {
     password: req.body.password,
     created: todayDate
   };
-
+  console.log("THIS IS USER DATA");
+  console.log(userData);
   User.findOne({
     where: {
       email: req.body.email
